@@ -1,13 +1,9 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "StoryPlaces story schema v2",
   "description": "This schema defines how a story is stored ",
   "type": "object",
   "properties": {
-    "id": {
-      "description": "The unique identifier for the story",
-      "type": "string"
-    },
     "name": {
       "description": "The title of the story",
       "type": "string"
@@ -99,7 +95,6 @@
   },
   "additionalProperties": false,
   "required": [
-    "id",
     "name",
     "author",
     "pages",
@@ -188,9 +183,9 @@
           "uniqueItems": true
         }
       },
-      "requiredProperties": [
+      "required": [
         "direction",
-        "location"
+        "locations"
       ],
       "additionalProperties": false
     },
@@ -489,6 +484,13 @@
         },
         "value": {
           "type": "string"
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionReference"
+          },
+          "uniqueItems": true
         }
       },
       "additionalProperties": false,
@@ -516,6 +518,13 @@
         },
         "variable": {
           "$ref": "#/definitions/variableReference"
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionReference"
+          },
+          "uniqueItems": true
         }
       },
       "additionalProperties": false,
@@ -545,7 +554,15 @@
         },
         "value": {
           "type": "string"
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionReference"
+          },
+          "uniqueItems": true
         }
+
       },
       "additionalProperties": false,
       "required": [

@@ -1,4 +1,5 @@
 import {v2} from "./draft-02";
+import {multiV1} from "./draft-multi-01";
 import {File} from "../File";
 import * as Ajv from "ajv";
 import * as path from "path";
@@ -10,7 +11,9 @@ export class core {
     schemas = [
         {schema: null, upgradeUsing: null, schemaFile: null},
         {schema: "https://storyplaces.soton.ac.uk/schema/02", upgradeUsing: new v2(), schemaFile: "story.schema.02.json"},
-        {schema: "https://storyplaces.soton.ac.uk/schema/03-draft", upgradeUsing: new v3(), schemaFile: "story.schema.03.draft.json"}
+        {schema: "https://storyplaces.soton.ac.uk/schema/03-draft", upgradeUsing: new v3(), schemaFile: "story.schema.03.draft.json"},
+        //multiV1() works, as the upgrade process hasn't changed between v1 and v2
+        {schema: "https://storyplaces.soton.ac.uk/schema/multi/02", upgradeUsing: new multiV1(), schemaFile: "story.schema.multi.02.json"}
     ];
 
     upgradeSchema(providedData, validate) {

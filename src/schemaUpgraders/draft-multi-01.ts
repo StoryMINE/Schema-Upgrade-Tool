@@ -51,7 +51,7 @@ export class multiV1 {
     }
 
     addRoles() {
-        this.data.roles = [ {name: "Main Role", required: true}];
+        this.data.roles = [ {id: "Main Role", required: true}];
     }
 
 }

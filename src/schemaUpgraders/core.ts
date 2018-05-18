@@ -44,21 +44,20 @@ export class core {
 
         if (validate) {
             console.log("Performing Schema Validation");
-            let result = this.cleanThenValidateSchema(newSchema, path.resolve(__dirname, "..", "..", "schema", this.schemas[newVersionIndex].schemaFile));
+            let result = this.validateSchema(newSchema, path.resolve(__dirname, "..", "..", "schema", this.schemas[newVersionIndex].schemaFile));
             console.log(result? "Schema successfully validated" : "Invalid schema");
         }
 
         return newSchema;
     }
 
-    private cleanThenValidateSchema(data, schemaFile) {
+    private validateSchema(data, schemaFile) {
         let dataToValidate = Object.assign({}, data);
 
         schemaFile = File.getFullFileName(schemaFile);
         let schema = File.readFileContents(schemaFile);
 
-        //Remove any additional properties where additionalProperties = false.
-        let ajv = new Ajv({removeAdditional: true});
+        let ajv = new Ajv();
         let valid = ajv.validate(JSON.parse(schema), dataToValidate);
 
         if (!valid) {

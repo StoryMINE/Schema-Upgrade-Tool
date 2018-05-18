@@ -22,7 +22,8 @@
       "enum": [
         "published",
         "draft",
-        "review"
+        "review",
+        "preview"
       ]
     },
     "roles": {

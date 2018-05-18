@@ -463,6 +463,9 @@
         },
         {
           "$ref": "#/definitions/function-Increment"
+        },
+        {
+          "$ref": "#/definitions/function-Chain"
         }
       ]
     },
@@ -572,6 +575,36 @@
         "type",
         "variable",
         "value"
+      ]
+    },
+    "function-Chain": {
+      "properties": {
+        "conditions": {
+          "$ref": "#/definitions/conditionsReferenceArray"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "chain"
+          ]
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionReference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "conditions",
+        "type",
+        "functions"
       ]
     },
     "location": {

@@ -242,7 +242,7 @@
               "type": "string",
               "enum": [
                 "global",
-                "instance"
+                "shared"
               ]
             }
           },
@@ -281,6 +281,9 @@
         },
         {
           "$ref": "#/definitions/condition-TimeRange"
+        },
+        {
+          "$ref": "#/definitions/condition-IsRole"
         }
       ]
     },
@@ -299,7 +302,9 @@
           "type": "string",
           "enum": [
             "AND",
-            "OR"
+            "OR",
+            "NOR",
+            "NAND"
           ]
         },
         "conditions": {
@@ -473,6 +478,28 @@
       ],
       "additionalProperties": false
     },
+    "condition-IsRole": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "isrole"
+          ]
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "role"
+      ],
+      "additionalProperties": false
+    },
     "conditionComparisonType": {
       "type": "string",
       "enum": [
@@ -503,6 +530,9 @@
         },
         {
           "$ref": "#/definitions/function-Increment"
+        },
+        {
+          "$ref": "#/definitions/function-SetRole"
         }
       ]
     },
@@ -540,6 +570,39 @@
         "conditions",
         "type",
         "variable",
+        "value"
+      ]
+    },
+    "function-SetRole": {
+      "properties": {
+        "conditions": {
+          "$ref": "#/definitions/conditionsReferenceArray"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "setrole"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/functionReference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "conditions",
+        "type",
         "value"
       ]
     },

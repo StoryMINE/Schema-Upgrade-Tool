@@ -30,6 +30,10 @@
         "preview"
       ]
     },
+    "publishDate": {
+      "description": "Date the story was published",
+      "type": "string"
+    },
     "roles": {
       "description": "The roles available to the participants of the story",
       "type": "array",

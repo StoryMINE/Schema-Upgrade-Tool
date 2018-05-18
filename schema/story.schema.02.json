@@ -26,6 +26,10 @@
         "preview"
       ]
     },
+    "publishDate": {
+      "description": "Date the story was published",
+      "type": "string"
+    },
     "pages": {
       "description": "The collection of pages in the story",
       "type": "array",
